@@ -6,4 +6,3 @@ std::string mtVec2::toString() {
     stream << "(" << x << ", " << y << ")";
     return stream.str();
 }
-

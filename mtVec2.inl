@@ -45,6 +45,14 @@ inline mtVec2 mtVec2::operator-() const {
     return mtVec2(-x, -y);
 }
 
+inline bool mtVec2::operator==(mtVec2 const& vec) const {
+    return floatEqual(x, vec.x) && floatEqual(y, vec.y);
+}
+
+inline bool mtVec2::operator!=(mtVec2 const& vec) const {
+    return (!floatEqual(x, vec.x)) || (!floatEqual(y, vec.y));
+}
+
 inline float mtVec2::len() const {
     float sqrlen = x * x + y * y;
     return sqrtf(sqrlen);
@@ -68,3 +76,6 @@ inline float mtVec2::normalize(float epsilon) {
     return len;
 }
 
+inline mtVec2 mtVec2::interpolate(mtVec2 const& vec, float factor) const {
+    return *this + (vec - *this) * factor;
+}

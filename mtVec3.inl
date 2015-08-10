@@ -49,6 +49,14 @@ inline mtVec3 mtVec3::operator-() const {
     return mtVec3(-x, -y, -z);
 }
 
+inline bool mtVec3::operator==(mtVec3 const& vec) const {
+    return floatEqual(x, vec.x) && floatEqual(y, vec.y) && floatEqual(z, vec.z);
+}
+
+inline bool mtVec3::operator!=(mtVec3 const& vec) const {
+    return (!floatEqual(x, vec.x)) || (!floatEqual(y, vec.y)) || (!floatEqual(z, vec.z));
+}
+
 inline float mtVec3::len() const {
     float sqrlen = x * x + y * y + z * z;
     return sqrtf(sqrlen);
@@ -74,6 +82,10 @@ inline float mtVec3::normalize(float epsilon) {
     return len;
 }
 
+inline mtVec3 mtVec3::interpolate(mtVec3 const& vec, float factor) const {
+    return *this + (vec - *this) * factor;
+}
+
 inline float mtVec3::dot(mtVec3 const& vec) const {
     return x * vec.x + y * vec.y + z * vec.z;
 }
@@ -81,4 +93,3 @@ inline float mtVec3::dot(mtVec3 const& vec) const {
 inline mtVec3 mtVec3::cross(mtVec3 const& vec) const {
     return mtVec3(y*vec.z-z*vec.y, z*vec.x-x*vec.z, x*vec.y-y*vec.x);
 }
-

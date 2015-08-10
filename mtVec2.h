@@ -2,6 +2,7 @@
 #define MTVEC2_H
 
 #include <string>
+#include "mtCommon.h"
 
 class mtVec2 {
 public:
@@ -13,15 +14,18 @@ public:
                 mtVec2(mtVec2 const& vec);
 
     mtVec2&     operator=(mtVec2 const& vec);
-    mtVec2      operator+(mtVec2 const& vec)    const;
-    mtVec2      operator-(mtVec2 const& vec)    const;
-    mtVec2      operator*(float scalar)         const;
-    mtVec2      operator/(float scalar)         const;
-    mtVec2      operator-()                     const;
+    mtVec2      operator+(mtVec2 const& vec)                    const;
+    mtVec2      operator-(mtVec2 const& vec)                    const;
+    mtVec2      operator*(float scalar)                         const;
+    mtVec2      operator/(float scalar)                         const;
+    mtVec2      operator-()                                     const;
+    bool        operator==(mtVec2 const& vec)                   const;
+    bool        operator!=(mtVec2 const& vec)                   const;
 
-    float       len()                           const;
-    float       squaredLen()                    const;
-    float       normalize(float epsilon);
+    float       len()                                           const;
+    float       squaredLen()                                    const;
+    float       normalize(float epsilon=MTMATH_FLOAT_EPSILON);
+    mtVec2      interpolate(mtVec2 const& vec, float factor)    const;
 
     std::string toString();
 };
@@ -29,4 +33,3 @@ public:
 #include "mtVec2.inl"
 
 #endif//MTVEC2_H
-
