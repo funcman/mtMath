@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include "mtPt3.h"
 
 inline mtVec3::mtVec3() {
     x = 0.f;
@@ -55,6 +56,14 @@ inline bool mtVec3::operator==(mtVec3 const& vec) const {
 
 inline bool mtVec3::operator!=(mtVec3 const& vec) const {
     return (!floatEqual(x, vec.x)) || (!floatEqual(y, vec.y)) || (!floatEqual(z, vec.z));
+}
+
+inline mtPt3 mtVec3::operator+(mtPt3 const& pt) const {
+    return mtPt3(pt.x+x, pt.y+y, pt.z+z);
+}
+
+inline mtPt3 mtVec3::operator-(mtPt3 const& pt) const {
+    return mtPt3(pt.x-x, pt.y-y, pt.z-z);
 }
 
 inline float mtVec3::len() const {
