@@ -4,6 +4,7 @@
 
 std::string mtMat44::toString() {
     std::ostringstream stream;
+    stream << "mat44" << std::endl;
     for (int i=0; i<4; ++i) {
         stream << "| ";
         for (int j=0; j<4; ++j) {

@@ -1,5 +1,5 @@
-#include "mtVec3.h"
 #include <math.h>
+#include "mtVec3.h"
 
 inline mtMat44::mtMat44() {
     for (int i=0; i<4; ++i) {
@@ -136,6 +136,15 @@ inline bool mtMat44::operator!=(mtMat44 const& mat) const {
         }
     }
     return !equal;
+}
+
+inline mtMat44 mtMat44::zero() {
+    return mtMat44(
+        0.f, 0.f, 0.f, 0.f,
+        0.f, 0.f, 0.f, 0.f,
+        0.f, 0.f, 0.f, 0.f,
+        0.f, 0.f, 0.f, 0.f
+    );
 }
 
 inline mtMat44 mtMat44::identity() {

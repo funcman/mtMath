@@ -40,6 +40,7 @@ public:
     bool            operator==(mtMat44 const& mat)          const;
     bool            operator!=(mtMat44 const& mat)          const;
 
+    static mtMat44  zero();
     static mtMat44  identity();
     static mtMat44  lookAtLH(mtVec3 const& eye, mtVec3 const& target, mtVec3 const& up);
     static mtMat44  lookAtRH(mtVec3 const& eye, mtVec3 const& target, mtVec3 const& up);
