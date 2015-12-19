@@ -1,5 +1,6 @@
 #include <float.h>
 #include <math.h>
+#include "mtPt2.h"
 
 inline mtVec2::mtVec2() {
     x = 0;
@@ -51,6 +52,14 @@ inline bool mtVec2::operator==(mtVec2 const& vec) const {
 
 inline bool mtVec2::operator!=(mtVec2 const& vec) const {
     return (!floatEqual(x, vec.x)) || (!floatEqual(y, vec.y));
+}
+
+inline mtPt2 mtVec2::operator+(mtPt2 const& pt) const {
+    return mtPt2(pt.x+x, pt.y+y);
+}
+
+inline mtPt2 mtVec2::operator-(mtPt2 const& pt) const {
+    return mtPt2(pt.x-x, pt.y-y);
 }
 
 inline float mtVec2::len() const {

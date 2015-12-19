@@ -4,6 +4,8 @@
 #include <string>
 #include "mtCommon.h"
 
+class mtPt2;
+
 class mtVec2 {
 public:
     float x;
@@ -21,6 +23,9 @@ public:
     mtVec2      operator-()                                     const;
     bool        operator==(mtVec2 const& vec)                   const;
     bool        operator!=(mtVec2 const& vec)                   const;
+
+    mtPt2       operator+(mtPt2 const& pt)                      const;
+    mtPt2       operator-(mtPt2 const& pt)                      const;
 
     float       len()                                           const;
     float       squaredLen()                                    const;

@@ -3,6 +3,6 @@
 
 std::string mtVec2::toString() {
     std::ostringstream stream;
-    stream << "(" << x << ", " << y << ")";
+    stream << "vec2 (" << x << ", " << y << ")";
     return stream.str();
 }
