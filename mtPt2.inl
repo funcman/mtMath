@@ -48,3 +48,11 @@ inline mtPt2 mtPt2::operator+(mtVec2 const& vec) const {
 inline mtPt2 mtPt2::operator-(mtVec2 const& vec) const {
     return mtPt2(x-vec.x, y-vec.y);
 }
+
+inline mtVec2 mtPt2::from(mtPt2 const& pt) const {
+    return mtVec2(x-pt.x, y-pt.y);
+}
+
+inline mtVec2 mtPt2::to(mtPt2 const& pt) const {
+    return mtVec2(pt.x-x, pt.y-y);
+}
