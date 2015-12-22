@@ -4,6 +4,7 @@
 #include <string>
 
 class mtVec2;
+class mtRect;
 
 class mtPt2 {
 public:
@@ -26,7 +27,9 @@ public:
     mtVec2      from(mtPt2 const& pt)                           const;
     mtVec2      to(mtPt2 const& pt)                             const;
 
-    std::string toString();
+    mtRect      operator*(mtPt2 const& pt)                      const;
+
+    std::string toString()                                      const;
 };
 
 #include "mtPt2.inl"

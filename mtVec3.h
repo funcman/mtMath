@@ -36,7 +36,7 @@ public:
     float       dot(mtVec3 const& vec)                          const;
     mtVec3      cross(mtVec3 const& vec)                        const;
 
-    std::string toString();
+    std::string toString()                                      const;
 };
 
 #include "mtVec3.inl"

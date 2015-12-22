@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iomanip>
 
-std::string mtMat44::toString() {
+std::string mtMat44::toString() const {
     std::ostringstream stream;
     stream << "mat44" << std::endl;
     for (int i=0; i<4; ++i) {

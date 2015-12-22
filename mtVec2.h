@@ -32,7 +32,7 @@ public:
     float       normalize(float epsilon=MTMATH_FLOAT_EPSILON);
     mtVec2      interpolate(mtVec2 const& vec, float factor)    const;
 
-    std::string toString();
+    std::string toString()                                      const;
 };
 
 #include "mtVec2.inl"

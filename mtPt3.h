@@ -26,9 +26,8 @@ public:
     mtPt3       operator-(mtVec3 const& vec)                    const;
     mtVec3      from(mtPt3 const& pt)                           const;
     mtVec3      to(mtPt3 const& pt)                             const;
-//    mtCube      operator*(mtPt3 const& vec)                     const;
 
-    std::string toString();
+    std::string toString()                                      const;
 };
 
 #include "mtPt3.inl"

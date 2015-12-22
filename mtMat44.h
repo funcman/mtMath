@@ -49,7 +49,7 @@ public:
 
     mtVec3          transform(mtVec3 const& vec)            const;
 
-    std::string     toString();
+    std::string     toString()                              const;
 };
 
 #include "mtMat44.inl"
