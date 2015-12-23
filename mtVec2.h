@@ -19,6 +19,7 @@ public:
     mtVec2      operator+(mtVec2 const& vec)                    const;
     mtVec2      operator-(mtVec2 const& vec)                    const;
     mtVec2      operator*(float scalar)                         const;
+    float       operator*(mtVec2 const& vec)                    const;
     mtVec2      operator/(float scalar)                         const;
     mtVec2      operator-()                                     const;
     bool        operator==(mtVec2 const& vec)                   const;
@@ -27,8 +28,8 @@ public:
     mtPt2       operator+(mtPt2 const& pt)                      const;
     mtPt2       operator-(mtPt2 const& pt)                      const;
 
-    float       len()                                           const;
-    float       squaredLen()                                    const;
+    float       norm()                                          const;
+    float       squaredNorm()                                   const;
     float       normalize(float epsilon=MTMATH_FLOAT_EPSILON);
     mtVec2      interpolate(mtVec2 const& vec, float factor)    const;
 

@@ -20,6 +20,7 @@ public:
     mtVec3      operator+(mtVec3 const& vec)                    const;
     mtVec3      operator-(mtVec3 const& vec)                    const;
     mtVec3      operator*(float scalar)                         const;
+    float       operator*(mtVec3 const& vec)                    const;
     mtVec3      operator/(float scalar)                         const;
     mtVec3      operator-()                                     const;
     bool        operator==(mtVec3 const& vec)                   const;
@@ -28,13 +29,12 @@ public:
     mtPt3       operator+(mtPt3 const& pt)                      const;
     mtPt3       operator-(mtPt3 const& pt)                      const;
 
-    float       len()                                           const;
-    float       squaredLen()                                    const;
-    float       normalize(float epsilon=0.f);
-    mtVec3      interpolate(mtVec3 const& vec, float factor)    const;
-
     float       dot(mtVec3 const& vec)                          const;
     mtVec3      cross(mtVec3 const& vec)                        const;
+    float       norm()                                          const;
+    float       squaredNorm()                                   const;
+    float       normalize(float epsilon=0.f);
+    mtVec3      interpolate(mtVec3 const& vec, float factor)    const;
 
     std::string toString()                                      const;
 };

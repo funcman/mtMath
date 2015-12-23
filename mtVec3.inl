@@ -39,6 +39,10 @@ inline mtVec3 mtVec3::operator*(float scalar) const {
     return mtVec3(x*scalar, y*scalar, z*scalar);
 }
 
+inline float mtVec3::operator*(mtVec3 const& vec) const {
+    return x * vec.x + y * vec.y + z * vec.z;
+}
+
 inline mtVec3 mtVec3::operator/(float scalar) const {
     if (scalar != 0.f) {
         return mtVec3(x/scalar, y/scalar, z/scalar);
@@ -66,39 +70,39 @@ inline mtPt3 mtVec3::operator-(mtPt3 const& pt) const {
     return mtPt3(pt.x-x, pt.y-y, pt.z-z);
 }
 
-inline float mtVec3::len() const {
-    float sqrlen = x * x + y * y + z * z;
-    return sqrtf(sqrlen);
-}
-
-inline float mtVec3::squaredLen() const {
-    return x * x + y * y + z * z;
-}
-
-inline float mtVec3::normalize(float epsilon) {
-    float len = this->len();
-    if (len > epsilon) {
-        float invlen = 1.f / len;
-        x *= invlen;
-        y *= invlen;
-        z *= invlen;
-    }else {
-        len = 0.f;
-        x   = 0.f;
-        y   = 0.f;
-        z   = 0.f;
-    }
-    return len;
-}
-
-inline mtVec3 mtVec3::interpolate(mtVec3 const& vec, float factor) const {
-    return *this + (vec - *this) * factor;
-}
-
 inline float mtVec3::dot(mtVec3 const& vec) const {
-    return x * vec.x + y * vec.y + z * vec.z;
+    return (*this) *vec;
 }
 
 inline mtVec3 mtVec3::cross(mtVec3 const& vec) const {
     return mtVec3(y*vec.z-z*vec.y, z*vec.x-x*vec.z, x*vec.y-y*vec.x);
+}
+
+inline float mtVec3::norm() const {
+    float sqrlen = x * x + y * y + z * z;
+    return sqrtf(sqrlen);
+}
+
+inline float mtVec3::squaredNorm() const {
+    return x * x + y * y + z * z;
+}
+
+inline float mtVec3::normalize(float epsilon) {
+    float norm = this->norm();
+    if (norm > epsilon) {
+        float invlen = 1.f / norm;
+        x *= invlen;
+        y *= invlen;
+        z *= invlen;
+    }else {
+        norm    = 0.f;
+        x       = 0.f;
+        y       = 0.f;
+        z       = 0.f;
+    }
+    return norm;
+}
+
+inline mtVec3 mtVec3::interpolate(mtVec3 const& vec, float factor) const {
+    return *this + (vec - *this) * factor;
 }

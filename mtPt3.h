@@ -26,6 +26,8 @@ public:
     mtPt3       operator-(mtVec3 const& vec)                    const;
     mtVec3      from(mtPt3 const& pt)                           const;
     mtVec3      to(mtPt3 const& pt)                             const;
+    float       distanceFrom(mtPt3 const& pt)                   const;
+    float       distanceTo(mtPt3 const& pt)                     const;
 
     std::string toString()                                      const;
 };

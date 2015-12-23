@@ -26,6 +26,8 @@ public:
     mtPt2       operator-(mtVec2 const& vec)                    const;
     mtVec2      from(mtPt2 const& pt)                           const;
     mtVec2      to(mtPt2 const& pt)                             const;
+    float       distanceFrom(mtPt2 const& pt)                   const;
+    float       distanceTo(mtPt2 const& pt)                     const;
 
     mtRect      operator*(mtPt2 const& pt)                      const;
 

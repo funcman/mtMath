@@ -60,3 +60,11 @@ inline mtVec3 mtPt3::from(mtPt3 const& pt) const {
 inline mtVec3 mtPt3::to(mtPt3 const& pt) const {
     return mtVec3(pt.x-x, pt.y-y, pt.z-z);
 }
+
+inline float mtPt3::distanceFrom(mtPt3 const& pt) const {
+    return mtVec3(x-pt.x, y-pt.y, z-pt.z).norm();
+}
+
+inline float mtPt3::distanceTo(mtPt3 const& pt) const {
+    return mtVec3(pt.x-x, pt.y-y, z-pt.z).norm();
+}
