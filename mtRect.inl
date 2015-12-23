@@ -1,5 +1,3 @@
-#include "mtPt2.h"
-
 inline mtRect::mtRect() {
     leftTop     = mtPt2();
     rightBottom = mtPt2();

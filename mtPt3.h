@@ -4,6 +4,7 @@
 #include <string>
 
 class mtVec3;
+class mtBox;
 
 class mtPt3 {
 public:
@@ -28,6 +29,8 @@ public:
     mtVec3      to(mtPt3 const& pt)                             const;
     float       distanceFrom(mtPt3 const& pt)                   const;
     float       distanceTo(mtPt3 const& pt)                     const;
+
+    mtBox       operator*(mtPt3 const& pt)                      const;
 
     std::string toString()                                      const;
 };

@@ -3,7 +3,7 @@
 #include "mtRect.h"
 
 mtRect mtPt2::operator*(mtPt2 const& pt) const {
-    return mtRect(*this,pt).leftHand();
+    return mtRect(*this, pt).leftHand();
 }
 
 std::string mtPt2::toString() const {
