@@ -5,6 +5,7 @@
 #include "mtCommon.h"
 
 class mtPt3;
+class mtMat44;
 
 class mtVec3 {
 public:
@@ -19,8 +20,9 @@ public:
     mtVec3&     operator=(mtVec3 const& vec);
     mtVec3      operator+(mtVec3 const& vec)                    const;
     mtVec3      operator-(mtVec3 const& vec)                    const;
-    mtVec3      operator*(float scalar)                         const;
     float       operator*(mtVec3 const& vec)                    const;
+    mtVec3      operator*(mtMat44 const& mat)                   const;
+    mtVec3      operator*(float scalar)                         const;
     mtVec3      operator/(float scalar)                         const;
     mtVec3      operator-()                                     const;
     bool        operator==(mtVec3 const& vec)                   const;
@@ -35,6 +37,7 @@ public:
     float       squaredNorm()                                   const;
     float       normalize(float epsilon=0.f);
     mtVec3      interpolate(mtVec3 const& vec, float factor)    const;
+    mtVec3      transform(mtMat44 const& mat)                   const;
 
     std::string toString()                                      const;
 };

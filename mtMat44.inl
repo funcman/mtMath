@@ -92,6 +92,14 @@ inline mtMat44 mtMat44::operator*(mtMat44 const& mat) const {
     );
 }
 
+inline mtVec3 mtMat44::operator*(mtVec3 const& vec) const {
+    float x = vec.x * m11 + vec.y * m12 + vec.z * m13 + m14;
+    float y = vec.x * m21 + vec.y * m22 + vec.z * m23 + m24;
+    float z = vec.x * m31 + vec.y * m32 + vec.z * m33 + m34;
+    float w = vec.x * m41 + vec.y * m42 + vec.z * m43 + m44;
+    return mtVec3(x / w, y / w, z / w);
+}
+
 inline mtMat44 mtMat44::operator*(float scalar) const {
     return mtMat44(
         m11 * scalar, m12 * scalar, m13 * scalar, m14 * scalar,
@@ -220,10 +228,16 @@ inline mtMat44 mtMat44::perspectiveFovRH(float fieldOfView, float aspect, float 
     );
 }
 
+inline mtMat44& mtMat44::transpose() {
+    MTSWAPF(m12, m21);
+    MTSWAPF(m13, m31);
+    MTSWAPF(m14, m41);
+    MTSWAPF(m23, m32);
+    MTSWAPF(m24, m42);
+    MTSWAPF(m34, m43);
+    return *this;
+}
+
 inline mtVec3 mtMat44::transform(mtVec3 const& vec) const {
-    float x = vec.x * m[0][0] + vec.y * m[1][0] + vec.z * m[2][0] + m[3][0];
-    float y = vec.x * m[0][1] + vec.y * m[1][1] + vec.z * m[2][1] + m[3][1];
-    float z = vec.x * m[0][2] + vec.y * m[1][2] + vec.z * m[2][2] + m[3][2];
-    float w = vec.x * m[0][3] + vec.y * m[1][3] + vec.z * m[2][3] + m[3][3];
-    return mtVec3(x/w, y/w, z/w);
+    return (*this) * vec;
 }

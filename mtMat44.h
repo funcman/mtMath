@@ -35,6 +35,7 @@ public:
     mtMat44         operator+(mtMat44 const& mat)           const;
     mtMat44         operator-(mtMat44 const& mat)           const;
     mtMat44         operator*(mtMat44 const& mat)           const;
+    mtVec3          operator*(mtVec3 const& vec)            const;
     mtMat44         operator*(float scalar)                 const;
     mtMat44         operator/(float scalar)                 const;
     bool            operator==(mtMat44 const& mat)          const;
@@ -47,6 +48,7 @@ public:
     static mtMat44  perspectiveFovLH(float fieldOfView, float aspect, float near, float far);
     static mtMat44  perspectiveFovRH(float fieldOfView, float aspect, float near, float far);
 
+    mtMat44&        transpose();
     mtVec3          transform(mtVec3 const& vec)            const;
 
     std::string     toString()                              const;

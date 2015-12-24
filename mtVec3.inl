@@ -1,6 +1,7 @@
 #include <float.h>
 #include <math.h>
 #include "mtPt3.h"
+#include "mtMat44.h"
 
 inline mtVec3::mtVec3() {
     x = 0.f;
@@ -35,12 +36,20 @@ inline mtVec3 mtVec3::operator-(mtVec3 const& vec) const {
     return mtVec3(x-vec.x, y-vec.y, z-vec.z);
 }
 
-inline mtVec3 mtVec3::operator*(float scalar) const {
-    return mtVec3(x*scalar, y*scalar, z*scalar);
-}
-
 inline float mtVec3::operator*(mtVec3 const& vec) const {
     return x * vec.x + y * vec.y + z * vec.z;
+}
+
+inline mtVec3 mtVec3::operator*(mtMat44 const& mat) const {
+    float x = this->x * mat.m11 + this->y * mat.m21 + this->z * mat.m31 + mat.m41;
+    float y = this->x * mat.m12 + this->y * mat.m22 + this->z * mat.m32 + mat.m42;
+    float z = this->x * mat.m13 + this->y * mat.m23 + this->z * mat.m33 + mat.m43;
+    float w = this->x * mat.m14 + this->y * mat.m24 + this->z * mat.m34 + mat.m44;
+    return mtVec3(x / w, y / w, z / w);
+}
+
+inline mtVec3 mtVec3::operator*(float scalar) const {
+    return mtVec3(x*scalar, y*scalar, z*scalar);
 }
 
 inline mtVec3 mtVec3::operator/(float scalar) const {
@@ -105,4 +114,8 @@ inline float mtVec3::normalize(float epsilon) {
 
 inline mtVec3 mtVec3::interpolate(mtVec3 const& vec, float factor) const {
     return *this + (vec - *this) * factor;
+}
+
+inline mtVec3 mtVec3::transform(mtMat44 const& mat) const {
+    return (*this) * mat;
 }
